@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>JS加入收藏夹</title>
+</head>
+<script>
+    javascript:(function () {
+        var w = window, d = document, s;
+        if (!w.jiathis) {
+            w.jiathis = 1;
+            s = d.createElement('script');
+            s.src = 'http://www.jiathis.com/code/j.js';
+            d.getElementsByTagName('head')[0].appendChild(s);
+            s = null
+        } else {
+            $CKE.center()
+        }
+    })()
+</script>
+<body>
+<a href="javascript:if(document.getElementById('testDiv')){document.body.removeChild(document.getElementById('testDiv'));}var divObj = document.createElement('DIV');divObj.id = 'testDiv';divObj.style.width = '620px';divObj.style.top = '10%';divObj.style.left = '30%';divObj.style.height = '540px';divObj.style.backgroundColor = '#888888';divObj.style.position = 'absolute';divObj.style.zIndex = 9999;document.body.appendChild(divObj);var frameObj = document.createElement('IFRAME');frameObj.src = 'http://sandbox.runjs.cn/show/ttf0gazp';frameObj.style.width = '100%';frameObj.style.height = '100%';var closeObj = document.createElement('A');closeObj.style.float = 'right';closeObj.href = 'javascript:document.body.removeChild(divObj)';closeObj.innerHTML = '关闭';divObj.appendChild(closeObj);divObj.appendChild(frameObj);"
+   onclick="addfavorite()">加入收藏！</a>
+</body>
+</html>

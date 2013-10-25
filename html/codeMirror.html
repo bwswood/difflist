@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="../js/lib/codemirror.js"></script>
+    <script type="text/javascript" src="../js/addon/mode/loadmode.js"></script>
+    <link rel="stylesheet" href="../js/lib/codemirror.css">
+</head>
+<body>
+<div style="width: 600px;height: 500px;border: 0.5px solid gray">
+    <div id="code" name="code" style="width: 100%;height: 100%"></div>
+</div>
+<input type="button" id="clearBut" value="clear">
+<script>
+
+    if(localStorage){
+        //读取上次保存的编辑信息
+        var loadContent = localStorage.getItem("myTest");
+        if(loadContent){
+            document.getElementById("code").value = loadContent;
+        }
+
+        //按ctrl+S时保存文档
+        document.onkeydown = function(e){
+            if(e.ctrlKey && e.keyCode == 83){
+                var saveContent = editor.getValue();
+                localStorage.setItem("myTest", saveContent);
+                return false;
+            }
+        }
+        //清除保存内容
+        document.getElementById("clearBut").onclick = function (){
+            //alert();
+            localStorage.setItem("myTest", " ");
+        }
+    }
+
+    //加载编辑器
+    CodeMirror.modeURL = "../js/mode/%N/%N.js";
+    var editor = CodeMirror(document.getElementById("code"), {
+        lineNumbers: true
+    });
+    editor.setOption("mode", "javascript");
+    CodeMirror.autoLoadMode(editor, editor.getOption("mode"));
+    //editor.setOption("readOnly", "true");
+    editor.setSize("100%", "100%")
+    //editor.readOnly(true);
+    function createDiv(){
+        //alert(1);
+        var URL = "if(document.getElementById(\"testDiv\")){document.body.removeChild(document.getElementById(\"testDiv\"));}var divObj = document.createElement(\"DIV\");divObj.id = \"testDiv\";divObj.style.width = \"620px\";divObj.style.top = \"10%\";divObj.style.left = \"30%\";divObj.style.height = \"540px\";divObj.style.backgroundColor = \"#888888\";divObj.style.position = \"absolute\";divObj.style.zIndex = 9999;document.body.appendChild(divObj);var frameObj = document.createElement(\"IFRAME\");frameObj.src = \"http://sandbox.runjs.cn/show/ttf0gazp\";frameObj.style.width = \"100%\";frameObj.style.height = \"100%\";var closeObj = document.createElement(\"A\");closeObj.style.float = \"right\";closeObj.href = \"javascript:document.body.removeChild(document.getElementById(\'testDiv\'))\";closeObj.innerHTML = \"关闭\";divObj.appendChild(closeObj);divObj.appendChild(frameObj);"
+
+        //alert(document.getElementById("testDiv").width);
+    }
+
+    createDiv();
+
+</script>
+</body>
+</html>
